@@ -171,15 +171,17 @@ Please confirm availability and price. Thank you.`;
 }
 
 function App() {
+  const [menu,setMenu]=useState(false);
+  const [openFaq,setOpenFaq]=useState(null);
+
+
   if (window.location.pathname === "/terms-and-conditions") {
   return <TermsAndConditions />;
 }
   if (window.location.pathname === "/privacy-policy") {
   return <PrivacyPolicy />;
 }
-  const [menu,setMenu]=useState(false);
-  const [openFaq,setOpenFaq]=useState(null);
-
+  
   return <div className="site">
     <div className="topbar"><div className="container topbar-inner">
       <span><Clock3 size={14}/> Airport transfers around your flight schedule</span>
