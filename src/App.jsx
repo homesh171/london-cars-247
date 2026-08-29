@@ -1,3 +1,5 @@
+import TermsAndConditions from "./TermsAndConditions";
+import PrivacyPolicy from "./PrivacyPolicy";
 import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowRight, Check, ChevronDown, Clock3, Mail, MapPin, Menu,
@@ -169,6 +171,12 @@ Please confirm availability and price. Thank you.`;
 }
 
 function App() {
+  if (window.location.pathname === "/terms-and-conditions") {
+  return <TermsAndConditions />;
+}
+  if (window.location.pathname === "/privacy-policy") {
+  return <PrivacyPolicy />;
+}
   const [menu,setMenu]=useState(false);
   const [openFaq,setOpenFaq]=useState(null);
 
@@ -181,7 +189,7 @@ function App() {
     <header className="header"><div className="container nav">
       <a className="brand" href="#home" onClick={()=>setMenu(false)}>
         <span className="brand-mark"><Plane size={21}/></span>
-        <span><strong>London Airport</strong><small>Travel Services</small></span>
+        <span><strong>London Cars 247</strong><small>Airport Transfers</small></span>
       </a>
       <nav className={menu?"nav-links open":"nav-links"}>
         {["Home","Airports","Services","Vehicles","About","FAQ","Contact"].map(x=><a key={x} href={`#${x.toLowerCase()}`} onClick={()=>setMenu(false)}>{x}</a>)}
@@ -240,7 +248,7 @@ function App() {
       <section id="contact" className="cta"><div className="container cta-inner"><div><span className="eyebrow">READY TO TRAVEL?</span><h2>Let's get your airport transfer <em>booked.</em></h2><p>Send your journey details on WhatsApp and we'll get back to you.</p></div><div className="cta-actions"><WhatsAppButton>Book on WhatsApp</WhatsAppButton><a className="email-link" href="mailto:info@londoncars247.com"><Mail size={18}/> info@londoncars247.com</a></div></div></section>
     </main>
 
-    <footer><div className="container footer-grid"><div><a className="brand footer-brand" href="#home"><span className="brand-mark"><Plane size={21}/></span><span><strong>London Airport</strong><small>Travel Services</small></span></a><p>Private airport transfers across London. Simple booking through WhatsApp.</p></div><div><h4>Quick links</h4><a href="#airports">Airports</a><a href="#services">Services</a><a href="#vehicles">Vehicles</a><a href="#faq">FAQ</a></div><div><h4>Contact</h4><a href="tel:+442081445555"><Phone size={15}/> 0208 144 5555</a><a href="https://wa.me/447412850832" target="_blank" rel="noreferrer"><MessageCircle size={15}/> 07412 850832</a><a href="mailto:info@londoncars247.com"><Mail size={15}/> info@londoncars247.com</a><span><MapPin size={15}/> 9 Town Quay Wharf<br/>Abbey Road, Barking, England, IG11 7BZ</span></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} London Cars 247. All rights reserved.</span><span>Airport transfers • London</span></div></footer>
+    <footer><div className="container footer-grid"><div><a className="brand footer-brand" href="#home"><span className="brand-mark"><Plane size={21}/></span><span><strong>London Cars 247</strong><small>Airport Transfers</small></span></a><p>Private airport transfers across London. Simple booking through WhatsApp.</p></div><div><h4>Quick links</h4><a href="#airports">Airports</a><a href="#services">Services</a><a href="#vehicles">Vehicles</a><a href="#faq">FAQ</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms-and-conditions">Terms &amp; Conditions</a></div><div><h4>Contact</h4><a href="tel:+442081445555"><Phone size={15}/> 0208 144 5555</a><a href="https://wa.me/447412850832" target="_blank" rel="noreferrer"><MessageCircle size={15}/> 07412 850832</a><a href="mailto:info@londoncars247.com"><Mail size={15}/> info@londoncars247.com</a><span><MapPin size={15}/> 9 Town Quay Wharf<br/>Abbey Road, Barking, England, IG11 7BZ</span></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} London Cars 247. All rights reserved.</span><span>Airport transfers • London</span></div></footer>
 
     <a className="floating-wa" href={waUrl("Hello, I would like to book an airport transfer.")} target="_blank" rel="noreferrer" aria-label="WhatsApp"><MessageCircle size={27}/></a>
   </div>;
