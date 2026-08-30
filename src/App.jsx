@@ -194,7 +194,15 @@ function App() {
         <span><strong>London Cars 247</strong><small>Airport Transfers</small></span>
       </a>
       <nav className={menu?"nav-links open":"nav-links"}>
-        {["Home","Airports","Services","Vehicles","About","FAQ","Contact"].map(x=><a key={x} href={`#${x.toLowerCase()}`} onClick={()=>setMenu(false)}>{x}</a>)}
+        {["Home","Airports","Services","Vehicles","About","FAQ","Join as Driver","Contact"].map(x =>
+  <a
+    key={x}
+    href={x === "Join as Driver" ? "#join-as-driver" : `#${x.toLowerCase()}`}
+    onClick={() => setMenu(false)}
+  >
+    {x}
+  </a>
+)}
         <WhatsAppButton/>
       </nav>
       <button className="menu-btn" onClick={()=>setMenu(!menu)} aria-label="Menu">{menu?<X/>:<Menu/>}</button>
@@ -246,6 +254,108 @@ function App() {
       <section id="about" className="about"><div className="container about-grid"><div><span className="eyebrow">ABOUT US</span><h2>Airport travel without the <em>stress.</em></h2><p>London Cars 247 provides private airport transfers for customers travelling to and from London airports. Our focus is straightforward: clear communication, comfortable journeys and a simple way to book.</p><div className="about-checks"><span><Check/> WhatsApp-first booking</span><span><Check/> London airport coverage</span><span><Check/> Private door-to-door journeys</span><span><Check/> Personalised quotes</span></div></div><div className="quote-card"><Quote size={30}/><p>“Tell us where you're going. We'll help make getting there simple.”</p><span>London Cars 247</span></div></div></section>
 
       <section id="faq" className="section light"><div className="container faq-wrap"><div className="section-head centered"><span className="eyebrow dark">FAQ</span><h2>Questions, <em>answered.</em></h2></div><div className="faq-list">{faqs.map(([q,a],i)=><div className="faq" key={q}><button onClick={()=>setOpenFaq(openFaq===i?null:i)}><span>{q}</span><ChevronDown className={openFaq===i?"rotate":""}/></button>{openFaq===i&&<p>{a}</p>}</div>)}</div></div></section>
+
+<section id="join-as-driver" className="driver-section">
+  <div className="container driver-grid">
+
+    <div className="driver-content">
+      <span className="eyebrow dark">DRIVER PARTNERS</span>
+
+      <h2>
+        Drive with <em>London Cars 247.</em>
+      </h2>
+
+      <p className="driver-lead">
+        We're building a reliable network of professional drivers
+        providing airport transfers across London and surrounding areas.
+        If you're a licensed driver looking for new booking opportunities,
+        we'd love to hear from you.
+      </p>
+
+      <div className="driver-benefits">
+
+        <div>
+          <ShieldCheck size={20}/>
+          <span>
+            <strong>Professional Network</strong>
+            <small>Become part of the London Cars 247 driver network.</small>
+          </span>
+        </div>
+
+        <div>
+          <Plane size={20}/>
+          <span>
+            <strong>Airport Transfer Opportunities</strong>
+            <small>Access opportunities for London airport journeys.</small>
+          </span>
+        </div>
+
+        <div>
+          <Clock3 size={20}/>
+          <span>
+            <strong>Flexible Availability</strong>
+            <small>Tell us when and where you're available to work.</small>
+          </span>
+        </div>
+
+        <div>
+          <MessageCircle size={20}/>
+          <span>
+            <strong>Simple Communication</strong>
+            <small>Stay connected with our team through direct communication.</small>
+          </span>
+        </div>
+
+      </div>
+
+      <div className="driver-actions">
+        <a
+          className="btn btn-whatsapp driver-apply-btn"
+          href="https://forms.gle/ppoTsiPWFkTCQrJZ6"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Apply to Become a Driver
+          <ArrowRight size={18}/>
+        </a>
+
+        <a
+          className="driver-email"
+          href="mailto:partner@londoncars247.com"
+        >
+          <Mail size={17}/>
+          partner@londoncars247.com
+        </a>
+      </div>
+
+    </div>
+
+    <div className="driver-card">
+      <div className="driver-card-number">DRIVER PARTNER</div>
+
+      <div className="driver-card-icon">
+        <CarFront size={34}/>
+      </div>
+
+      <h3>
+        Ready to join<br/>
+        <em>our network?</em>
+      </h3>
+
+      <p>
+        Complete our driver application form and our team will
+        review your details.
+      </p>
+
+      <div className="driver-card-line"></div>
+
+      <span className="driver-card-note">
+        London Cars 247 • Airport Transfers
+      </span>
+    </div>
+
+  </div>
+</section>
 
       <section id="contact" className="cta"><div className="container cta-inner"><div><span className="eyebrow">READY TO TRAVEL?</span><h2>Let's get your airport transfer <em>booked.</em></h2><p>Send your journey details on WhatsApp and we'll get back to you.</p></div><div className="cta-actions"><WhatsAppButton>Book on WhatsApp</WhatsAppButton><a className="email-link" href="mailto:info@londoncars247.com"><Mail size={18}/> info@londoncars247.com</a></div></div></section>
     </main>

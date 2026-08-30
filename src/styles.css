@@ -444,3 +444,230 @@ font-size: 9px;
   }
 }
 
+/* =========================================================
+   DRIVER PARTNERS SECTION
+========================================================= */
+
+.driver-section {
+  padding: 100px 0;
+  background: #f7f7f5;
+}
+
+.driver-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.75fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.driver-content {
+  max-width: 650px;
+}
+
+.driver-content h2 {
+  font-size: 43px;
+  line-height: 1.1;
+  letter-spacing: -1.4px;
+  margin: 12px 0 20px;
+  color: var(--text);
+}
+
+.driver-content h2 em {
+  font-family: "Playfair Display", serif;
+  color: var(--gold2);
+  font-weight: 600;
+}
+
+.driver-lead {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.driver-benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.driver-benefits > div {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.driver-benefits svg {
+  width: 20px;
+  color: #a78345;
+  flex: none;
+  margin-top: 2px;
+}
+
+.driver-benefits strong,
+.driver-benefits small {
+  display: block;
+}
+
+.driver-benefits strong {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.driver-benefits small {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.driver-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.driver-apply-btn {
+  text-decoration: none;
+}
+
+.driver-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8e6c35;
+}
+
+.driver-email:hover {
+  color: #c0954e;
+}
+
+.driver-card {
+  background: var(--navy);
+  color: #fff;
+  padding: 48px;
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 3px solid var(--gold);
+  box-shadow: 0 20px 50px rgba(17, 31, 46, .12);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.driver-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, .18);
+}
+
+.driver-card-number {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.driver-card-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  background: rgba(213, 174, 99, .1);
+  color: var(--gold2);
+  margin: 22px 0 20px;
+}
+
+.driver-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 0 15px;
+  color: #fff;
+}
+
+.driver-card h3 em {
+  color: var(--gold2);
+  font-style: italic;
+}
+
+.driver-card p {
+  color: #aeb8c1;
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 390px;
+  margin: 0;
+}
+
+.driver-card-line {
+  width: 45px;
+  height: 1px;
+  background: var(--gold);
+  margin: 28px 0 18px;
+}
+
+.driver-card-note {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8f9ba5;
+}
+
+/* Driver section responsive */
+
+@media (max-width: 900px) {
+  .driver-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .driver-card {
+    max-width: 580px;
+  }
+}
+
+@media (max-width: 620px) {
+  .driver-section {
+    padding: 70px 0;
+  }
+
+  .driver-content h2 {
+    font-size: 34px;
+  }
+
+  .driver-lead {
+    font-size: 13px;
+  }
+
+  .driver-benefits {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .driver-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .driver-apply-btn {
+    width: 100%;
+  }
+
+  .driver-email {
+    justify-content: center;
+  }
+
+  .driver-card {
+    padding: 35px;
+    min-height: 330px;
+  }
+
+  .driver-card h3 {
+    font-size: 29px;
+  }
+}
