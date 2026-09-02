@@ -9,6 +9,32 @@ import {
 
 const WHATSAPP = "447412850832";
 const LOCATIONIQ_TOKEN = import.meta.env.VITE_LOCATIONIQ_TOKEN || "";
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || "";
+
+function loadGoogleAnalytics() {
+  if (!GA_MEASUREMENT_ID) return;
+  if (document.getElementById("google-analytics-script")) return;
+
+  const script = document.createElement("script");
+  script.id = "google-analytics-script";
+  script.async = true;
+  script.src =
+    "https://www.googletagmanager.com/gtag/js?id=" +
+    GA_MEASUREMENT_ID;
+
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+
+  window.gtag = gtag;
+
+  gtag("js", new Date());
+  gtag("config", GA_MEASUREMENT_ID);
+}
 
 const airports = [
   ["Heathrow Airport", "LHR", "Reliable transfers to and from every Heathrow terminal."],
@@ -168,6 +194,58 @@ Please confirm availability and price. Thank you.`;
       <p className="form-note"><ShieldCheck size={15}/> Your booking request is sent directly to our WhatsApp.</p>
     </form>
   </div>;
+}
+
+function CookieConsent() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const consent = localStorage.getItem("londoncars247_cookie_consent");
+
+    if (consent === "accepted") {
+      loadGoogleAnalytics();
+    } else if (!consent) {
+      setVisible(true);
+    }
+  }, []);
+
+  const accept = () => {
+    localStorage.setItem("londoncars247_cookie_consent", "accepted");
+    loadGoogleAnalytics();
+    setVisible(false);
+  };
+
+  const reject = () => {
+    localStorage.setItem("londoncars247_cookie_consent", "rejected");
+    setVisible(false);
+  };
+
+  if (!visible) return null;
+
+  return (
+    <div className="cookie-banner">
+      <div className="cookie-content">
+        <div>
+          <strong>We use cookies</strong>
+          <p>
+            We use analytics cookies to understand how visitors use our
+            website and improve your experience. You can accept or reject
+            analytics cookies.
+          </p>
+        </div>
+
+        <div className="cookie-actions">
+          <button className="cookie-reject" onClick={reject}>
+            Reject
+          </button>
+
+          <button className="cookie-accept" onClick={accept}>
+            Accept
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function App() {
@@ -397,6 +475,9 @@ if (
     <footer><div className="container footer-grid"><div><a className="brand footer-brand" href="#home"><span className="brand-mark"><Plane size={21}/></span><span><strong>London Cars 247</strong><small>Airport Transfers</small></span></a><p>Private airport transfers across London. Simple booking through WhatsApp.</p></div><div><h4>Quick links</h4><a href="#airports">Airports</a><a href="#services">Services</a><a href="#vehicles">Vehicles</a><a href="#join-as-driver">Join as Driver</a><a href="#faq">FAQ</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms-and-conditions">Terms &amp; Conditions</a></div><div><h4>Contact</h4><a href="tel:+442081445555"><Phone size={15}/> 0208 144 5555</a><a href="https://wa.me/447412850832" target="_blank" rel="noreferrer"><MessageCircle size={15}/> 07412 850832</a><a href="mailto:info@londoncars247.com"><Mail size={15}/> info@londoncars247.com</a><span><MapPin size={15}/> 9 Town Quay Wharf<br/>Abbey Road, Barking, England, IG11 7BZ</span></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} London Cars 247. All rights reserved.</span><span>Airport transfers • London</span></div></footer>
 
     <a className="floating-wa" href={waUrl("Hello, I would like to book an airport transfer.")} target="_blank" rel="noreferrer" aria-label="WhatsApp"><MessageCircle size={27}/></a>
+  
+  <CookieConsent />
+
   </div>;
 }
 
