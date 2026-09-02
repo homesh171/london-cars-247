@@ -249,6 +249,19 @@ function CookieConsent() {
 }
 
 function App() {
+
+  useEffect(() => {
+  const path = window.location.pathname;
+
+  if (path === "/terms-and-conditions") {
+    document.title = "Terms & Conditions | London Cars 247";
+  } else if (path === "/privacy-policy") {
+    document.title = "Privacy Policy | London Cars 247";
+  } else {
+    document.title = "London Cars 247 | London Airport Transfers";
+  }
+}, []);
+
   const [menu,setMenu]=useState(false);
   const [openFaq,setOpenFaq]=useState(null);
 
