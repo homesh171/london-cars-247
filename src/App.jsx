@@ -253,12 +253,37 @@ function App() {
   useEffect(() => {
   const path = window.location.pathname;
 
+  const metaDescription = document.querySelector(
+    'meta[name="description"]'
+  );
+
   if (path === "/terms-and-conditions") {
     document.title = "Terms & Conditions | London Cars 247";
+
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Read the Terms & Conditions for London Cars 247, covering bookings, cancellations, payments, airport transfers and use of our services."
+      );
+    }
   } else if (path === "/privacy-policy") {
     document.title = "Privacy Policy | London Cars 247";
+
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Read the London Cars 247 Privacy Policy to understand how we collect, use, store and protect your personal information."
+      );
+    }
   } else {
     document.title = "London Cars 247 | London Airport Transfers";
+
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Book reliable London airport transfers with London Cars 247. 24/7 private transfers to and from Heathrow, Gatwick, Stansted, Luton, London City, Southend and other UK airports."
+      );
+    }
   }
 }, []);
 
