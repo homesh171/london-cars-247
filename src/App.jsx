@@ -181,6 +181,40 @@ function App() {
   if (window.location.pathname === "/privacy-policy") {
   return <PrivacyPolicy />;
 }
+
+if (
+  window.location.pathname !== "/" &&
+  window.location.pathname !== "/terms-and-conditions" &&
+  window.location.pathname !== "/privacy-policy"
+) {
+  return (
+    <div className="site">
+      <main className="error-page">
+        <div className="error-content">
+          <span className="error-code">404</span>
+
+          <h1>Page not found.</h1>
+
+          <p>
+            Sorry, we couldn't find the page you're looking for.
+            It may have been moved or the address may be incorrect.
+          </p>
+
+          <div className="error-actions">
+            <a className="btn btn-dark" href="/">
+              Back to Home
+              <ArrowRight size={18} />
+            </a>
+
+            <WhatsAppButton>
+              Book on WhatsApp
+            </WhatsAppButton>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
   
   return <div className="site">
     <div className="topbar"><div className="container topbar-inner">
